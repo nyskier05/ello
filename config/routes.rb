@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'pages#home'
+  get 'about' => 'pages#about'
+  #get 'pages/home'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,5 +57,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-   root 'welcome#index'
+  # root 'welcome#index'
 end
