@@ -19,7 +19,11 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-gem 'rails_12factor', group: :production
+
+group :production do
+	gem 'rails_12factor'
+	gem 'pg', '~> 0.15'
+end
 ruby "2.3.1"
 
 # Use ActiveModel has_secure_password
