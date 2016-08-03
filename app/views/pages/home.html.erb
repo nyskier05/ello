@@ -1,9 +1,14 @@
 <div class="jumbotron center">
 	<h1>Welcome to Ello!</h1>
-	<p>
-		<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg"%>
-		<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg"%>
-	</p>
+
+	<% if user_signed_in? %>
+		#do something
+	<% else %>
+		<p>
+			<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg"%>
+			<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg"%>
+		</p>
+	<% end %>
 </div>
 
 <!-- <p>Find me in app/views/pages/home.html.erb</p> -->
