@@ -21,3 +21,5 @@ doc/
 *~
 .project
 .DS_Store
+public/assets/**
+public/system/users/avatars/**
