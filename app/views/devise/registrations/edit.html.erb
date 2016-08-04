@@ -3,16 +3,60 @@
   <div class="panel-body"> 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= devise_error_messages! %>
-
+      <div class="form-group">
+        <div><%= f.label :first_name %><br />
+        <%= f.text_field :first_name, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :last_name %><br />
+        <%= f.text_field :last_name, :autofocus => true, class: "form-control"  %></div>
+      </div>
       <div class="form-group">
         <div><%= f.label :email %><br />
         <%= f.email_field :email, :autofocus => true, class: "form-control"  %></div>
       </div>
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
-
+      <div class="form-group">
+        <div><%= f.label :date_of_birth %><br />
+        <%= f.date_field :date_of_birth, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <%= f.select(:is_female, [['Female',false], ['Male',true]], {:selected => (@user.is_female?)}) %>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :height %><br />
+        <%= f.number_field :height, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :church %><br />
+        <%= f.text_field :church, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :church_status %><br />
+        <%= f.text_field :church_status, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :interests %><br />
+        <%= f.text_area :interests, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :testimony %><br />
+        <%= f.text_area :testimony, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :more_info %><br />
+        <%= f.text_area :more_info, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :non_negotiables %><br />
+        <%= f.text_area :non_negotiables, :autofocus => true, class: "form-control"  %></div>
+      </div>
+      <div class="form-group">
+        <div><%= f.label :cellphone %><br />
+        <%= f.text_field :cellphone, :autofocus => true, class: "form-control"  %></div>
+      </div>
       <div class="form-group">
         <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
         <%= f.password_field :password, :autocomplete => "off", class: "form-control"  %></div>
