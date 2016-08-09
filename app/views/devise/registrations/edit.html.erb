@@ -24,7 +24,7 @@
       </div>
       <div class="form-group">
         <div><%= f.label :is_female, 'Gender' %><br />
-        <%= f.select(:is_female, [['Female',false], ['Male',true]], {:selected => (@user.is_female?)}, {class: "form-control"}) %></div>
+        <%= f.select(:is_female, [['Female',true], ['Male',false]], {:selected => (@user.is_female?)}, {class: "form-control"}) %></div>
       </div>
       <div class="form-group">
         <div><%= f.label :height %><br />

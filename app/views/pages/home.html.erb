@@ -1,9 +1,30 @@
 <div class="jumbotron center">
-	<h1>welcome to ello</h1>
-	<p>join us today</p>
+	<h1>welcome to ello</h1>	
 	<% if user_signed_in? %>
-		#do something
+		<body>
+			<% @user.each do |user| %>
+				<ul style="list-style-type: none;"> 
+					<li>Name: <%= user.first_name %> <%= user.last_name[0,1] %>.</li>
+					<li><%= image_tag user.avatar.url(:thumb) %></li>
+					<li>
+						<% if user.is_female == true %>
+							Female,
+						<% else %>
+							Male,
+						<% end %>
+						Age: <%= Time.now.utc.to_date.year - user.date_of_birth.year - (user.date_of_birth.to_date.change(:year => Time.now.utc.to_date.year) > Time.now.utc.to_date ? 1 : 0)%>,
+						Height: <%= user.height %>
+					</li>
+					<li>Church: <%= user.church %>, <%= user.church_status %></li>
+					<li>Interests: <%= user.interests %></li>
+					<li>My Testimony/Faith: <%= user.testimony %></li>
+					<li>My Story: <%= user.more_info %></li>
+					<li>Non Negotiables: <%= user.non_negotiables %></li>
+				</ul>
+			<% end %>
+		<tbody>	
 	<% else %>
+	<p>join us today</p>
 		<p>
 			<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg"%>
 			<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg"%>
