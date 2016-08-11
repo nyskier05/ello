@@ -31,19 +31,21 @@
       <div class="col-md-6">
         <%= form_for [@conversation, @message] do |f| %>
           <div class="input-group input-group">
-            <%= f.text_field :body, class: "form-control",  placeholder: "Type message here..."%>
+            <%= f.text_field :body, class: "form-control",  placeholder: "Type message here..." %>
             <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
             <span class="input-group-btn">
-              <%= f.submit "Send", class: "btn btn-primary", type: "button" %>
+              <%= f.submit "Send", class: "btn btn-primary" %>
             </span>
-          </div><!-- /input-group -->
+          </div> 
         <% end %>
+        <br/>
+        </div><!-- /input-group --> 
          
       </div><!-- /.col-lg-6 -->
+      <input class="btn btn-default btn-sm" type="button" value="Refresh" onClick="history.go(0)">
     </div><!-- /.row -->
-    <br/>
-
-    <input class="btn btn-default btn-sm" type="button" value="Refresh" onClick="history.go(0)">
+    
   </div>
+  
 </div>
 
