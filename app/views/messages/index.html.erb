@@ -1,41 +1,49 @@
-<% if @over_ten %>
-   <%= link_to 'Show Previous', '?m=all' %>
-<% end %>
-
-<div class="ui segment">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.first_name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %>
-            </div>
-          </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      Conversation
+    </h3>
+  </div>
+  <div class="panel-body">
+    <% if @over_ten %>
+       <%= link_to 'Show Previous', '?m=all' %>
+    <% end %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well well-sm">
+          <ul class="list-unstyled">
+            <% @messages.each do |message| %>
+              <% if message.body %>
+                <li><% user = User.find(message.user_id) %></li>
+                <li><%= message.body %></li>
+                <footer class="small"><cite title="Source Title">
+                  <li class="text-right">
+                    <font color="#777">~<%= user.first_name %> <%= distance_of_time_in_words_to_now(message.created_at) %> ago</font>
+                  </li>
+                </cite></footer>
+              <% end %>
+            <% end %>
+          </ul>
         </div>
-      </div>
-    <% end %>
-  <% end %>
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= form_for [@conversation, @message] do |f| %>
+          <div class="input-group input-group">
+            <%= f.text_field :body, class: "form-control",  placeholder: "Type message here..."%>
+            <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+            <span class="input-group-btn">
+              <%= f.submit "Send", class: "btn btn-primary", type: "button" %>
+            </span>
+          </div><!-- /input-group -->
+        <% end %>
+         
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <br/>
+
+    <input class="btn btn-default btn-sm" type="button" value="Refresh" onClick="history.go(0)">
+  </div>
 </div>
-
-<div class="row">
-  <div class="col-md-6">
-    <%= form_for [@conversation, @message] do |f| %>
-      <div class="input-group input-group">
-        <%= f.text_field :body, class: "form-control",  placeholder: "Type message here..."%>
-        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-        <span class="input-group-btn">
-          <%= f.submit "Send", class: "btn btn-primary", type: "button" %>
-        </span>
-      </div><!-- /input-group -->
-    <% end %>
-     
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-<br/>
-
-<input class="btn btn-default btn-sm" type="button" value="Refresh" onClick="history.go(0)">
 
