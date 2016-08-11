@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
 	validates :cellphone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format, must be in ###-####-### format" }, :uniqueness => true
 	validates :is_female, inclusion: { in: [ true, false ] }
 	#validates_inclusion_of :is_female, in: [true, false]
+
+  has_many :conversations, :foreign_key => :sender_id
 end
