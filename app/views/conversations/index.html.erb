@@ -1,22 +1,31 @@
 <div class="ui segment">
-  <h3>Mailbox</h3>
-
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Conversations</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+          <% @conversations.each do |conversation| %>
+            <% if conversation.sender_id != conversation.recipient_id %>
+              <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                <% if conversation.sender_id == current_user.id %>
+                  <% recipient = User.find(conversation.recipient_id) %>
+                <% else %>
+                  <% recipient = User.find(conversation.sender_id) %>
+                <% end %>
+                <ui class="list-group-item">
+                  <%= link_to recipient.first_name, conversation_messages_path(conversation)%>    
+                </ui>
+              <% end %>
+            <% end %>
           <% end %>
-          <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-        <% end %>
-      <% end %>
+      </ul>
     </div>
   </div>
 </div>
-
+<br/>
+<input class="btn btn-default btn-sm" type="button" value="Refresh" onClick="history.go(0)">
+<!-- Comment out
 
 <div class="ui segment">
   <h3>All Users</h3>
@@ -24,9 +33,13 @@
     <% @users.each do |user| %>
       <% if user.id != current_user.id %>
       <div class="item">
-        <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+        <ui class="list-group-item">
+          <%= user.first_name %> <%= user.last_name[0,1] %>. - <%= link_to 'Send Msg', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: 'btn btn-info btn-xs' %>
+        </ui>
       </div>
       <% end %>
     <% end %>
   </div>
 </div>
+
+-->
