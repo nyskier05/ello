@@ -1,8 +1,12 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action do
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.involving(current_user).find(params[:conversation_id]) 
   end
+rescue_from ActiveRecord::RecordNotFound do
+  flash[:notice] = "You don't have access to conversation!"
+  redirect_to conversations_path
+end
 
 def index
   @messages = @conversation.messages

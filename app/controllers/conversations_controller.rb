@@ -3,18 +3,16 @@ class ConversationsController < ApplicationController
 
 def index
 	@users = User.all
-	@conversations = Conversation.all
+	@conversations = Conversation.involving(current_user)
 	#unless session[:user_id] == @conversations.sender_id OR session[:user_id] == @conversations.recipient_id 
   #    flash[:notice] = "You don't have access to that!"
   #    return
-   end
+  #end
 end
 
 def create
-	if Conversation.between(params[:sender_id],params[:recipient_id])
-   .present?
-    @conversation = Conversation.between(params[:sender_id],
-     params[:recipient_id]).first
+	if Conversation.between(params[:sender_id],params[:recipient_id]).present?
+    @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
 else
   @conversation = Conversation.create!(conversation_params)
 end

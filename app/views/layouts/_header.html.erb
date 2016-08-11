@@ -20,6 +20,7 @@
           <li><%= link_to "Mailbox", conversations_path, class: "item" %></li>
           <li><%= link_to "Settings", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <li class="navbar-text">[<%= current_user.first_name %>]</li>
         <% else %>
           <li><%= link_to "Login", new_user_session_path %></li>
         <% end %>
