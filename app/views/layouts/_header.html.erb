@@ -18,6 +18,7 @@
         <li><%= link_to "About", about_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Inbox", conversations_path, class: "item" %></li>
+          <li><%= link_to "Feedback", feedback_path %></li>
           <li><%= link_to "Settings", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           <li class="navbar-text"><%= image_tag current_user.avatar.url(:small), class: "img-circle", width: "30" %> <em><%= current_user.first_name %></em></li>

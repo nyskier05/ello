@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get 'about' => 'pages#about'
-
+  get 'feedback' => 'pages#feedback'
   resources :conversations do
     resources :messages
   end
