@@ -17,7 +17,7 @@
                       <% recipient = User.find(conversation.sender_id) %>
                     <% end %>
                     <ui class="list-group-item">
-                      <%= link_to recipient.first_name, conversation_messages_path(conversation)%>    
+                      <%= image_tag recipient.avatar.url(:small), class: "img-rounded", width: "20" %> <%= link_to "#{recipient.first_name} #{recipient.last_name[0,1]}.", conversation_messages_path(conversation)%>    
                     </ui>
                   <% end %>
                 <% end %>
