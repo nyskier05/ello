@@ -14,6 +14,7 @@ gem 'devise', '~> 3.4.0'
 gem 'pg', '~> 0.15'
 gem 'paperclip', '~> 5.0.0'
 gem 'aws-sdk', '>= 2.3'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug'

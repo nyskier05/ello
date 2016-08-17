@@ -35,4 +35,24 @@ class User < ActiveRecord::Base
     'Trinity Grace Church Upper East Side', 'Trinity Grace Church Upper West Side', 
     'Trinity Grace Church Washington Heights', 'Trinity Grace Church Williamsburg', 
     'Torcc Church', 'Other Not Listed']
+
+  NEIGHBORHOODS = ['Manhattan - Alphabet City', 'Manhattan - Battery Park City', 'Manhattan - Chelsea', 
+    'Manhattan - Chinatown', 'Manhattan - Clinton', 'Manhattan - East Harlem', 'Manhattan - East Village', 
+    'Manhattan - Financial District', 'Manhattan - Gramercy Park', 'Manhattan - Greenwich Village', 
+    'Manhattan - Hamilton Heights', 'Manhattan - Harlem', 'Manhattan - Inwood', 'Manhattan - Kips Bay', 
+    'Manhattan - Lenox Hill', 'Manhattan - Lincoln Square', 'Manhattan - Little Italy', 
+    'Manhattan - Lower East Side', 'Manhattan - Midtown', 'Manhattan - Morningside Heights', 
+    'Manhattan - Murray Hill', 'Manhattan - NoHo', 'Manhattan - Peter Cooper Village', 'Manhattan - Roosevelt Island', 
+    'Manhattan - SoHo', 'Manhattan - Spanish Harlem', 'Manhattan - Stuyvesant Town', 'Manhattan - Sutton Place', 
+    'Manhattan - TriBeCa', 'Manhattan - Tudor City', 'Manhattan - Turtle Bay', 'Manhattan - Upper East Side', 
+    'Manhattan - Upper West Side', 'Manhattan - Wards Island', 'Manhattan - Washington Heights', 
+    'Manhattan - Waterside Plaza', 'Manhattan - West Village', 'Manhattan - Yorkville', 'Manhattan - Other', 
+    'Brooklyn - Bedford-Stuyvesant', 'Brooklyn - Boerum Hill', 'Brooklyn - Brooklyn Heights', 
+    'Brooklyn - Brooklyn Navy Yard', 'Brooklyn - Bushwick', 'Brooklyn - Carroll Gardens', 'Brooklyn - Clinton Hill', 
+    'Brooklyn - Cobble Hill', 'Brooklyn - Crown Heights', 'Brooklyn - DUMBO', 'Brooklyn - Flatbush', 
+    'Brooklyn - Fort Greene', 'Brooklyn - Gowanus', 'Brooklyn - Greenpoint', 'Brooklyn - Park Slope', 
+    'Brooklyn - Prospect Heights', 'Brooklyn - Red Hook', 'Brooklyn - Vinegar Hill', 'Brooklyn - Williamsburg', 
+    'Brooklyn - Other', 'Bronx', 'Queens - Astoria', 'Queens - Elmhurst', 'Queens - Flushing', 'Queens - Hunters Point', 
+    'Queens - Long Island City', 'Queens - Maspeth', 'Queens - Ridgewood', 'Queens - Steinway', 'Queens - Sunnyside', 
+    'Queens - Woodside', 'Queens - Other', 'Staten Island', 'New Jersey', 'Connecticut', 'Other']
 end
