@@ -24,22 +24,24 @@
             </div>
             <div class="form-group">
             	<div><%= f.label :is_female, 'Gender' %><br />
-              <%= f.select(:is_female, [['Female',true], ['Male',false]], {:selected => (@user.is_female?)}, {class: "form-control"}) %></div>
+              <%= f.select(:is_female, [['',''],['Female',true], ['Male',false]], {:selected => (@user.is_female?)}, {class: "form-control"}) %></div>
             </div>
             <div class="form-group">
               <div><%= f.label :height %><br />
-                <%= f.select(:height, [['5-0 or less', 60],['5-2', 62],['5-4', 64],['5-6', 66],['5-8', 68],['5-10', 70],['6-0', 72],['6-2', 74],['6-4', 76],['6-6 or more', 78]], {:selected => (@user.height)}, {class: "form-control"}) %>
+                <%= f.select(:height, [['',''],['5-0 or less', 60],['5-2', 62],['5-4', 64],['5-6', 66],['5-8', 68],['5-10', 70],['6-0', 72],['6-2', 74],['6-4', 76],['6-6 or more', 78]], {:selected => (@user.height)}, {class: "form-control"}) %>
               </div>
             </div>
             <div class="form-group">
-              <div><%= f.label :church %><br />
-              <%= f.text_field :church, :autofocus => true, class: "form-control"  %></div>
+              <div>
+                <%= f.label :church %><br />
+                <%= f.collection_select :church, User::CHURCHES, :to_s, :to_s, {:include_blank => true}, {class: "form-control"} %>
+              </div>
               <i>If you are looking for a church checkout <a href="http://www.faithstreet.com">www.faithstreet.com</a></i>
             </div>
             <div class="form-group">
               <div>
                 <%= f.label :church_status %><br />
-                <%= f.select(:church_status, ['Looking for a church','Visiting churches','Attend when I can','Attend regularly','In membership (0-2 yrs)','In membership (3-5 yrs)','In membership (5+ yrs)','In leadership (0-2 yrs)','In leadership (3-5 yrs)','In leadership (5+ yrs)'], {:selected => (@user.church_status)}, {class: "form-control"}) %>
+                <%= f.select(:church_status, ['','Looking for a church','Visiting churches','Attend when I can','Attend regularly','In membership (0-2 yrs)','In membership (3-5 yrs)','In membership (5+ yrs)','In leadership (0-2 yrs)','In leadership (3-5 yrs)','In leadership (5+ yrs)'], {:selected => (@user.church_status)}, {class: "form-control"}) %>
               </div>
             </div>
             <div class="form-group">

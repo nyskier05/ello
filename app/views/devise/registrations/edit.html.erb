@@ -36,13 +36,16 @@
               </div>
             </div>
             <div class="form-group">
-              <div><%= f.label :church %><br />
-              <%= f.text_field :church, :autofocus => true, class: "form-control"  %></div>
+              <div>
+                <%= f.label :church %><br />
+                <%= f.collection_select :church, User::CHURCHES, :to_s, :to_s, {:include_blank => true}, {class: "form-control"} %>
+              </div>
+              <i>If you are looking for a church checkout <a href="http://www.faithstreet.com">www.faithstreet.com</a></i>
             </div>
             <div class="form-group">
               <div>
                 <%= f.label :church_status %><br />
-                <%= f.select(:church_status, ['Looking for a church','Visiting churches','Attend when I can','Attend regularly','In membership 0-2 yrs','In membership 3-5 yrs','In membership 5+ yrs','In leadership 0-2 yrs','In leadership 3-5 yrs','In leadership 5+ yrs'], {:selected => (@user.church_status)}, {class: "form-control"}) %>
+                <%= f.select(:church_status, ['','Looking for a church','Visiting churches','Attend when I can','Attend regularly','In membership (0-2 yrs)','In membership (3-5 yrs)','In membership (5+ yrs)','In leadership (0-2 yrs)','In leadership (3-5 yrs)','In leadership (5+ yrs)'], {:selected => (@user.church_status)}, {class: "form-control"}) %>
               </div>
             </div>
             <div class="form-group">

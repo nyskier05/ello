@@ -1,0 +1,60 @@
+<div class="jumbotron center">
+	<% if user_signed_in? %>
+		<p></p>
+  	
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<%= @user.first_name %> <%= @user.last_name[0,1] %>. <%= link_to 'Send Msg', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: 'btn btn-info btn-xs pull-right' %>
+					</h3> 
+				</div>
+				<div class="panel-body">
+			  	<table class="table table-bordered">
+			  		<tbody>
+			  			<tr>
+			  				<th scope="row">Church</th>
+			  				<td align="left"><%= @user.church %>, <%= @user.church_status %></td>
+			  			</tr>
+			  			<tr>
+			  				<th scope="row">Interests</th>
+			  				<td align="left"><%= @user.interests %></td>
+			  			</tr>
+			  			<tr>
+			  				<th scope="row">Testimony/Faith</th>
+			  				<td align="left"><%= @user.testimony %></td>
+			  			</tr>
+			  			<tr>
+			  				<th scope="row">My Story</th>
+			  				<td align="left"><%= @user.more_info %></td>
+			  			</tr>
+			  			<tr>
+			  				<th scope="row">Non Negotiables</th>
+			  				<td align="left"><%= @user.non_negotiables %></td>
+			  			</tr>
+			  		</tbody>
+					</table>
+				</div>
+  			<div class="panel-footer">
+  				<div class="row"><%= image_tag @user.avatar.url(:thumb), class: "img-thumbnail" %></div>
+  				<p></p>
+  				<div class="row">
+						<% if @user.is_female == true %>
+							Female,
+						<% else %>
+							Male,
+						<% end %>
+							Age: <%= Time.now.utc.to_date.year - @user.date_of_birth.year - (@user.date_of_birth.to_date.change(:year => Time.now.utc.to_date.year) > Time.now.utc.to_date ? 1 : 0)%>,
+								Height: <%= @user.height / 12 %>'-<%= @user.height % 12 %>"
+					</div>
+				</div>
+			</div>
+
+	<% else %>
+	<h1>welcome to ello</h1>	
+	<p>join us today</p>
+		<p>
+			<%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg"%>
+			<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg"%>
+		</p>
+	<% end %>
+</div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about' => 'pages#about'
   get 'feedback' => 'pages#feedback'
+  get 'userprofiles/:id' => 'userprofiles#show', as: :userprofiles
   resources :conversations do
     resources :messages
   end
