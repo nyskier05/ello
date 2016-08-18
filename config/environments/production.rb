@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Required for Heroku, Devise
-  config.action_mailer.default_url_options = { :host => 'ellonyc.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.ellonyc.com' }
 
   #Sets Paperclip to upload images to Amazon S3
   config.paperclip_defaults = {
@@ -90,5 +90,21 @@ Rails.application.configure do
       s3_region: ENV.fetch('AWS_REGION'),
     }
   }
+
+  #For Devise Actionmailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: ENV["GMAIL_DOMAIN"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
+    }
 
 end
