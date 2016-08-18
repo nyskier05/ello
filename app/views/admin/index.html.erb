@@ -1,0 +1,77 @@
+
+<div class="well", overflow="auto">
+	<% if user_signed_in? && current_user && current_user.admin? %>
+		<h2>Admin Panel</h2>	
+		<p></p>
+		<div class="panel panel-default">
+			<div class="panel-heading">User Approvals</div>
+			<div class="panel-body"></div>
+			<div class="admin-panel">
+			 	<table class="table table-striped">
+			 		<thead>
+			 			<tr>
+				 			<th>Created</th>
+				 			<th>Full name</th>
+				 			<th>Gender</th>
+				 			<th>Age</th>
+				 			<th>Height</th>
+				 			<th>Church</th>
+				 			<th>Church status</th>
+				 			<th>Neighbhorhood</th>
+				 			<th>Confirmed</th>
+				 			<th>Admin?</th>
+				 			<th>Approved?</th>
+				 			<th>Click to Approve</th>
+				 			<th>Cellphone</th>
+				 			<th>Unconfirmed_email</th>
+				 			<th>DOB</th>
+				 			<th>Updated</th>
+				 		</tr>
+			 		</thead>
+			 		<tbody>
+			 			<% @user.each do |user| %>
+				 			<tr>
+			    			<td><%= user.created_at.strftime("%m/%d/%y") %></td>
+			    			<td><%= user.first_name %> <%= user.last_name %></td>
+			    			<td>
+			    				<% if user.is_female == true %>
+										Female
+									<% else %>
+										Male
+									<% end %>	
+			    			</td>
+			    			<td> <!--Age -->
+			    				<%= Time.now.utc.to_date.year - user.date_of_birth.year - (user.date_of_birth.to_date.change(:year => Time.now.utc.to_date.year) > Time.now.utc.to_date ? 1 : 0)%>
+			    			</td>
+			    			<td><%= user.height / 12 %>'-<%= user.height % 12 %></td>
+			    			<td><%= user.church %></td>
+			    			<td><%= user.church_status %></td>
+			    			<td><%= user.neighborhood %></td>
+			    			<td><%= user.confirmed_at.strftime("%m/%d/%y") %></td>
+			    			<td>
+			    				<% if user.admin == true %>
+										<b>*ADMIN*</b>
+									<% else %>
+										<i>---no---</i>
+									<% end %>			    				
+			    			</td>
+			    			<td>
+			    				<% if user.approved == true %>
+										<b>***approved***</b>
+									<% else %>
+										<i>---no pending-</i>
+									<% end %>	
+			    			</td>
+			    			<td><%= link_to "approve", approve_user_path(user.id) %></td>
+			    			<td><%= user.cellphone %></td>
+			    			<td><%= user.unconfirmed_email %></td>
+			    			<td><%= user.updated_at.strftime("%m/%d/%y") %></td>
+			    			<td><%= user.date_of_birth.strftime("%m/%d/%y") %></td>
+		    			</tr>
+	    			<% end %>
+					</tbody>
+	  		</table>
+	  	</div>
+		</div>
+	<% end %>
+</div>

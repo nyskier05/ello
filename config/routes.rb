@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'feedback' => 'pages#feedback'
   get 'userprofiles/:id' => 'userprofiles#show', as: :userprofiles
+  get 'admin' => 'admin#index'
+  get 'users/:id/approve'=> 'users#approve_user', as: 'approve_user'
   resources :conversations do
     resources :messages
   end

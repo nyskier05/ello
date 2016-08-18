@@ -14,6 +14,17 @@ class User < ActiveRecord::Base
 
   has_many :conversations, :foreign_key => :sender_id
 
+  def active_for_authentication? 
+    super && approved? 
+  end 
+
+  def inactive_message 
+    if !approved? 
+      :not_approved 
+    else 
+      super # Use whatever other message 
+    end 
+  end
   
   CHURCHES = ['(Currently looking for a church)', '(Visiting churches still deciding)', 'All Angels Church', 
     'Apostles Brooklyn', 'Apostles Union Square', 'Apostles Upper East Side', 'Brooklyn Tabernacle', 
