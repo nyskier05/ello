@@ -6,7 +6,7 @@
         <div class="well well-lg"> 
       		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       		  <%= devise_error_messages! %>
-      			<%= render :partial => 'devise/registrations/signupform', :locals => { :f => f } %>
+      			<%= render :partial => 'devise/registrations/signupfields', :locals => { :f => f } %>
             <div class="form-group">
               <div><%= f.label :avatar, 'Profile picture (headshot photo, like a passport pic)' %><br />
               <%= f.file_field :avatar, :autofocus => true, class: "form-control"  %></div><br />

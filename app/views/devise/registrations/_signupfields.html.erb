@@ -11,7 +11,7 @@
   <%= f.email_field :email, :autofocus => true, class: "form-control" %></div>
 </div>
 <div class="form-group">
-  <div><%= f.label :date_of_birth %><br />
+  <div><%= f.label :date_of_birth, "Date of birth (mm/dd/yyyy format)" %><br />
   <%= f.date_field :date_of_birth, :autofocus => true, class: "form-control"  %></div>
 </div>
 <div class="form-group">
@@ -33,7 +33,13 @@
 <div class="form-group">
   <div>
     <%= f.label :church_status %><br />
-    <%= f.select(:church_status, ['','Looking for a church','Visiting churches','Attend when I can','Attend regularly','In membership (0-2 yrs)','In membership (3-5 yrs)','In membership (5+ yrs)','In leadership (0-2 yrs)','In leadership (3-5 yrs)','In leadership (5+ yrs)'], {:selected => (@user.church_status)}, {class: "form-control"}) %>
+    <%= f.select(:church_status, ['','Looking for a church','Visiting churches','Attend when I can','Attend regularly','Member (0-2 yrs)','Member (3-5 yrs)','Member (5+ yrs)','In leadership (0-2 yrs)','In leadership (3-5 yrs)','In leadership (5+ yrs)'], {:selected => (@user.church_status)}, {class: "form-control"}) %>
+  </div>
+</div>
+<div class="form-group">
+  <div>
+    <%= f.label :neighborhood %><br />
+    <%= f.collection_select :neighborhood, User::NEIGHBORHOODS, :to_s, :to_s, {:include_blank => true}, {class: "form-control"} %>
   </div>
 </div>
 <div class="form-group">
@@ -57,3 +63,4 @@
   <%= f.text_field :cellphone, :autofocus => true, class: "form-control"  %></div>
   <i>Kept private, for verfication purposes only</i>
 </div>
+

@@ -46,7 +46,8 @@
 							Male,
 						<% end %>
 							Age: <%= Time.now.utc.to_date.year - user.date_of_birth.year - (user.date_of_birth.to_date.change(:year => Time.now.utc.to_date.year) > Time.now.utc.to_date ? 1 : 0)%>,
-								Height: <%= user.height / 12 %>'-<%= user.height % 12 %>"
+								Height: <%= user.height / 12 %>'-<%= user.height % 12 %>"<br/>
+								<%= user.neighborhood %>
 					</div>
 				</div>
 			</div>
