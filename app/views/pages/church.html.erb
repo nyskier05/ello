@@ -1,0 +1,10 @@
+<div class="jumbotron center">
+	<% if user_signed_in? %>
+		<h2>the ello community at: <%= @user.church %> </h2>	
+		<p></p>
+  	<%= render :partial => 'user_index', :locals => { :f => f } %>
+		<%= will_paginate @user %>
+	<% end %>
+</div>
+
+

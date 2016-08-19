@@ -23,6 +23,7 @@
 				 			<th>Admin?</th>
 				 			<th>Approved?</th>
 				 			<th>Cellphone</th>
+				 			<th>Email</th>
 				 			<th>DOB</th>
 				 			<th>Updated</th>
 				 		</tr>
@@ -74,6 +75,7 @@
 									<% end %>	
 			    			</td>
 			    			<td><%= user.cellphone %></td>
+			    			<td><%= user.email %></td>
 			    			<td>
 			    				<% if user.updated_at != nil %>
 			    					<%= user.updated_at.strftime("%m/%d/%y") %>

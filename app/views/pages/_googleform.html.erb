@@ -34,34 +34,40 @@
   </script>
 </head>
 <body class="ss-base-body" dir="ltr">
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLScbBWW7oh5iqwNirC4ZggbbA96W4Kd19F3V2xvdwnKNRKG9jw/formResponse?embedded=true" method="POST" id="ss-form" target="_self" onsubmit="">
-    
+  <!--<form action="https://docs.google.com/forms/d/e/1FAIpQLSe9ShOANNjTu5Fk8tDzZa5PH4KP9i581poCG9gXd00tceKEkw/formResponse?embedded=true" method="POST" id="ss-form" target="_self" onsubmit="">
+  -->
+    <script type="text/javascript">var submitted=false;</script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+      onload="if(submitted) {window.location='http://www.ellonyc.com/';}">  
+    </iframe>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSe9ShOANNjTu5Fk8tDzZa5PH4KP9i581poCG9gXd00tceKEkw/formResponse?embedded=true" method="post" target="hidden_iframe" onsubmit="submitted=true;">
     <!-- Question 1 -->
       <div class="form-group">
-        <label class="" for="entry_1245404822">Feedback / suggestions:
+        <label class="" for="entry_1245404822">feedback / suggestions
             <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
             <span class="" aria-hidden="true">*</span>
         </label>
     
-        <textarea name="entry.1245404822" class="form-control" rows="3" id="entry_1245404822" dir="auto" aria-label="feedback / suggestions:  " aria-required="true" required=""></textarea>
-        <div class="error-message" id="1380858966_errorMessage"></div>
-      </div>
+        <textarea name="entry.77009531" class="form-control" rows="3" id="entry_77009531" dir="auto" aria-label="feedback / suggestions  " aria-required="true" required=""></textarea>
+        <div class="error-message" id="1119095279_errorMessage"></div>
       <!-- Question 2 -->
       <div class="form-group">
-        <label class="" for="entry_221851864">Your email address:
+        <label class="" for="entry_1013807421">Your email address:
             <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
             <span class="" aria-hidden="true">*</span>
         </label>
    
-        <input type="text" name="entry.221851864" value="" class="form-control" id="entry_221851864" dir="auto" aria-label="your email address:  " aria-required="true" required="" title="">
-        <div class="error-message" id="422405189_errorMessage"></div>
+        <input type="text" name="entry.1013807421" value="" class="form-control" id="entry_1013807421" dir="auto" aria-label="email address  Must contain @" aria-required="true" required="" pattern=".*@.*" title="Must contain @">
+        <div class="error-message" id="1118281111_errorMessage"></div>
       </div>
 
       <!-- Submit Button -->
       <div class="form-group">
-        <input type="hidden" name="draftResponse" value="[,,&quot;8253142505107575742&quot;]">
+        <input type="hidden" name="draftResponse" value="[,,&quot;2096097967271534176&quot;]
+        ">
+
         <input type="hidden" name="pageHistory" value="0">
-        <input type="hidden" name="fbzx" value="8253142505107575742">
+        <input type="hidden" name="fbzx" value="2096097967271534176">
         <input type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-primary btn-sm">
       </div>
     </div>
