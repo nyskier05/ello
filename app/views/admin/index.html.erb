@@ -11,6 +11,7 @@
 			 		<thead>
 			 			<tr>
 				 			<th>Created</th>
+				 			<th>Profile pic</th>
 				 			<th>Full name</th>
 				 			<th>Gender</th>
 				 			<th>Age</th>
@@ -21,9 +22,7 @@
 				 			<th>Confirmed</th>
 				 			<th>Admin?</th>
 				 			<th>Approved?</th>
-				 			<th>Click to Approve</th>
 				 			<th>Cellphone</th>
-				 			<th>Unconfirmed_email</th>
 				 			<th>DOB</th>
 				 			<th>Updated</th>
 				 		</tr>
@@ -31,8 +30,13 @@
 			 		<tbody>
 			 			<% @user.each do |user| %>
 				 			<tr>
-			    			<td><%= user.created_at.strftime("%m/%d/%y") %></td>
-			    			<td><%= user.first_name %> <%= user.last_name %></td>
+			    			<td>
+			    				<% if user.created_at != nil %>
+			    					<%= user.created_at.strftime("%m/%d/%y") %>
+			    				<% end %>	
+			    			</td>
+			    			<td><%= image_tag user.avatar.url(:small), class: "img-thumbnail" %></td>
+			    			<td><%= link_to "#{user.first_name} #{user.last_name}", userprofiles_path(user)%>
 			    			<td>
 			    				<% if user.is_female == true %>
 										Female
@@ -47,7 +51,11 @@
 			    			<td><%= user.church %></td>
 			    			<td><%= user.church_status %></td>
 			    			<td><%= user.neighborhood %></td>
-			    			<td><%= user.confirmed_at.strftime("%m/%d/%y") %></td>
+			    			<td>
+			    				<% if user.confirmed_at != nil %>
+			    					<%= user.confirmed_at.strftime("%m/%d/%y") %>
+			    				<% end %>	
+			    			</td>
 			    			<td>
 			    				<% if user.admin == true %>
 										<b>*ADMIN*</b>
@@ -57,15 +65,20 @@
 			    			</td>
 			    			<td>
 			    				<% if user.approved == true %>
-										<b>***approved***</b>
+										<b>*APPROVED*</b> 
+										<% if user.admin == false %> 
+											[<i><%= link_to "unapprove", unapprove_user_path(user) %></i>]
+										<% end %>
 									<% else %>
-										<i>---no pending-</i>
+										<i>--no--</i> [<b><%= link_to "*APPROVE*", approve_user_path(user) %></b>]
 									<% end %>	
 			    			</td>
-			    			<td><%= link_to "approve", approve_user_path(user.id) %></td>
 			    			<td><%= user.cellphone %></td>
-			    			<td><%= user.unconfirmed_email %></td>
-			    			<td><%= user.updated_at.strftime("%m/%d/%y") %></td>
+			    			<td>
+			    				<% if user.updated_at != nil %>
+			    					<%= user.updated_at.strftime("%m/%d/%y") %>
+			    				<% end %>	
+			    			</td>
 			    			<td><%= user.date_of_birth.strftime("%m/%d/%y") %></td>
 		    			</tr>
 	    			<% end %>

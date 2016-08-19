@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>A new user just signed up for ello!</h3>
+    <br/>
+    <div class="admin-panel">
+        <table class="table table-striped">
+          <thead>
+            <tr>  
+              <th>Full name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Height</th>
+              <th>Church</th>
+              <th>Church status</th>
+              <th>Neighbhorhood</th>
+              <th>Admin?</th>
+              <th>Approved?</th>
+              <th>Cellphone</th>
+              <th>DOB</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><%= @user.first_name %> <%= @user.last_name %></td>
+                <td>
+                  <% if @user.is_female == true %>
+                    Female
+                  <% else %>
+                    Male
+                  <% end %> 
+                </td>
+                <td> <!--Age -->
+                  <%= Time.now.utc.to_date.year - @user.date_of_birth.year - (@user.date_of_birth.to_date.change(:year => Time.now.utc.to_date.year) > Time.now.utc.to_date ? 1 : 0)%>
+                </td>
+                <td><%= @user.height / 12 %>'-<%= @user.height % 12 %></td>
+                <td><%= @user.church %></td>
+                <td><%= @user.church_status %></td>
+                <td><%= @user.neighborhood %></td>
+                <td>
+                  <% if @user.admin == true %>
+                    <b>*ADMIN*</b>
+                  <% else %>
+                    <i>---no---</i>
+                  <% end %>                 
+                </td>
+                <td>
+                  <% if @user.approved == true %>
+                    <b>*APPROVED*</b> 
+                  <% else %>
+                    <i>--no--</i>
+                  <% end %> 
+                </td>
+                <td><%= @user.cellphone %></td>
+                <td><%= @user.updated_at.strftime("%m/%d/%y") %></td>
+                <td><%= @user.date_of_birth.strftime("%m/%d/%y") %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+  </body>
+  <footer>
+    <h3><a href="www.ellonyc.com">www.ellonyc.com</a></h3>
+  </footer>
+</html>

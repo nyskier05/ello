@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-  	@user = User.all.paginate(:page => params[:page], :per_page => 25)
+  	@user = User.where(approved: true).paginate(:page => params[:page], :per_page => 25)
   end
 
   def about

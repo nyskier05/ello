@@ -26,6 +26,11 @@ class User < ActiveRecord::Base
     end 
   end
   
+  after_create :send_admin_mail
+  def send_admin_mail
+    AdminMailer.new_user_waiting_for_approval(self).deliver
+  end
+
   CHURCHES = ['(Currently looking for a church)', '(Visiting churches still deciding)', 'All Angels Church', 
     'Apostles Brooklyn', 'Apostles Union Square', 'Apostles Upper East Side', 'Brooklyn Tabernacle', 
     'C3 Brooklyn', 'Calvary Baptist', 'Central Presbyterian ', 'Chinese Evangel Mission', 'Christ Church', 

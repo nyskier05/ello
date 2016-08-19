@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'userprofiles/:id' => 'userprofiles#show', as: :userprofiles
   get 'admin' => 'admin#index'
   get 'users/:id/approve'=> 'users#approve_user', as: 'approve_user'
+  get 'users/:id/unapprove'=> 'users#unapprove_user', as: 'unapprove_user'
   resources :conversations do
     resources :messages
   end
