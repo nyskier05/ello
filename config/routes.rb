@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'users/:id/approve'=> 'users#approve_user', as: 'approve_user'
   get 'users/:id/unapprove'=> 'users#unapprove_user', as: 'unapprove_user'
   get 'church' => 'pages#church'
-  #get 'neighborhood' => 'pages#neighborhood'
+  get 'neighborhood' => 'pages#neighborhood'
   resources :conversations do
     resources :messages
   end

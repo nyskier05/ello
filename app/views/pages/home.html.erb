@@ -1,7 +1,7 @@
 <div class="jumbotron center">
 	
 	<% if user_signed_in? %>
-		<h2>the ello community</h2>	
+		<h2>ello: everyone</h2>	
 		<p></p>
   	<% @user.each do |user| %>
 			<div class="panel panel-info">
@@ -15,8 +15,7 @@
 			  		<tbody>
 			  			<tr>
 			  				<th scope="row">Church</th>
-			  				<td align="left"><%= user.church %>, <%= user.church_status %> 
-			  					<!--<%= link_to user.church, church_path(user.church) %> -->
+			  				<td align="left"><b><%= link_to user.church, church_path(church: user.church) %></b>, <%= user.church_status %> 
 			  				</td>
 			  			</tr>
 			  			<tr>
@@ -49,7 +48,7 @@
 						<% end %>
 							Age: <%= Time.now.utc.to_date.year - user.date_of_birth.year - (user.date_of_birth.to_date.change(:year => Time.now.utc.to_date.year) > Time.now.utc.to_date ? 1 : 0)%>,
 								Height: <%= user.height / 12 %>'-<%= user.height % 12 %>"<br/>
-								<%= user.neighborhood %>
+								<b><%= link_to user.neighborhood, neighborhood_path(neighborhood: user.neighborhood) %></b>
 					</div>
 				</div>
 			</div>
