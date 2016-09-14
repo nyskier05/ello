@@ -29,6 +29,4 @@ server.csr
 server.key
 server.pass.key
 server.crt
-server.csr-old
-server.key-old
-server.pass.key-old
+.savedcerts
