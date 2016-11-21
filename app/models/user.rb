@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	validates :is_female, inclusion: { in: [ true, false ] }
 	#validates_inclusion_of :is_female, in: [true, false]
 
-  has_many :conversations, :foreign_key => :sender_id
+  has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
 
   def active_for_authentication? 
     super && approved? 
